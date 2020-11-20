@@ -27,7 +27,8 @@ RSpec.describe Tennis do
 
     context 'when a player wins a point' do
       it 'it increments their score by one' do
-        expect(subject.win_point(player_one)).to change { subject.player_one_score }.from(0).to(1)
+        subject.win_point(player_one)
+        expect(subject.player_one_score).to eq(1)
       end
     end
   end

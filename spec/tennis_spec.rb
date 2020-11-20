@@ -23,6 +23,11 @@
 
 RSpec.describe Tennis do
   describe "#initialize" do
-    context 'it takes two arguments of each player name'
+    context 'without two arguments of each player name' do
+      it 'raises an error' do
+        expect { describe_class.new(nil,nil).to raise_error }
+      end
+    end
+
   end
 end

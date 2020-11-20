@@ -33,6 +33,15 @@ RSpec.describe Tennis do
     end
   end
 
+  describe '#score' do
+    subject { described_class.new(player_one, player_two) }
+
+    it 'outputs the player scores' do
+      expect { subject.score }.to output('Player one score is..., player two score is...').to_stdout
+    end
+
+  end
+
 
 
 

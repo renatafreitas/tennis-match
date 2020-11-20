@@ -4,7 +4,7 @@ class Tennis
   # $prompt = TTY::Prompt.new
   # name = $prompt.ask('hello, whats your name')
   # puts name
-  #
+
   attr_accessor :player_one_score, :player_two_score
 
   def initialize(player_one, player_two)
@@ -21,6 +21,14 @@ class Tennis
     else
       @player_two_score += 1
     end
+  end
+
+  def score
+    puts 'test'
+  end
+
+  def winner
+
   end
 
 

@@ -21,14 +21,16 @@ class Tennis
   end
 
   def display_score
-    # return "Game won by #{winner}" if game_finished?
+    return "Game won by #{winner}" if game_finished?
 
     "#{SCORES[score[player_one]]} : #{SCORES[score[player_two]]}"
   end
 
   def winner
-    @player_one_score >= 4 && @player_two_score + 2 != @player_one_score
+    score.max_by { |_,v| v}
   end
 
-  def game_finished?; end
+  def game_finished?
+    score.max
+  end
 end

@@ -16,10 +16,10 @@ RSpec.describe Tennis do
         subject.win_point(player_one)
         expect(subject.display_score).to eq('15 : 0')
 
-        2.times { subject.win_point(player_one) }
+        subject.win_point(player_one)
         expect(subject.display_score).to eq('30 : 0')
 
-        3.times { subject.win_point(player_one) }
+        subject.win_point(player_one)
         expect(subject.display_score).to eq('40 : 0')
       end
     end
@@ -29,10 +29,10 @@ RSpec.describe Tennis do
         subject.win_point(player_two)
         expect(subject.display_score).to eq('0 : 15')
 
-        2.times { subject.win_point(player_two) }
+        subject.win_point(player_two)
         expect(subject.display_score).to eq('0 : 30')
 
-        3.times { subject.win_point(player_two) }
+        subject.win_point(player_two)
         expect(subject.display_score).to eq('0 : 40')
       end
     end
@@ -43,12 +43,12 @@ RSpec.describe Tennis do
         subject.win_point(player_two)
         expect(subject.display_score).to eq('15 : 15')
 
-        2.times { subject.win_point(player_one) }
-        2.times { subject.win_point(player_two) }
+        subject.win_point(player_one)
+        subject.win_point(player_two)
         expect(subject.display_score).to eq('30 : 30')
 
-        3.times { subject.win_point(player_one) }
-        3.times { subject.win_point(player_two) }
+        subject.win_point(player_one)
+        subject.win_point(player_two)
         expect(subject.display_score).to eq('40 : 40')
       end
     end

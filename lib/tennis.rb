@@ -5,6 +5,8 @@ class Tennis
 
   attr_accessor :player_one_score, :player_two_score
 
+  SCORES = ['0', '15', '30', '40']
+
   def initialize(player_one, player_two)
     @player_one = player_one
     @player_two = player_two
@@ -21,8 +23,7 @@ class Tennis
   end
 
   def display_score
-    # binding.pry
-    "#{@player_one_score} : #{@player_two_score}"
+    "#{SCORES[@player_one_score]} : #{SCORES[@player_two_score]}"
 
     # return "Game won by #{winner}" if game_finished?
 

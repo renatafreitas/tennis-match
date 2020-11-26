@@ -1,37 +1,59 @@
 require 'spec_helper'
 
 RSpec.describe Tennis do
-  subject { described_class }
+  subject(:tennis_match) { described_class.new }
 
   let(:player_one) { 'Joe' }
   let(:player_two) { 'Renata' }
   let(:player_one_score) { 0 }
   let(:player_two_score) { 0 }
 
-  describe '#initialize' do
-    context 'when two arguments are not given' do
-      it 'raises an argument error' do
-        expect { subject.new(nil, nil) }.to raise_error(ArgumentError, 'Please give player names')
-      end
-    end
-
-    context 'when two arguments are given' do
-      it 'does not raise an error' do
-        expect { subject.new(player_one, player_two) }.not_to raise_error
-      end
-    end
-  end
-
   describe '#win_point' do
     subject { described_class.new(player_one, player_two) }
 
-    context 'when a player wins a point' do
-      it 'it increments their score by one' do
+    context 'player one score points' do
+      it 'it increments scores by one' do
         subject.win_point(player_one)
-        expect(subject.player_one_score).to eq(1)
+        expect(subject.display_score).to eq('15 : 0')
+
+        2.times { subject.win_point(player_one) }
+        expect(subject.display_score).to eq('30 : 0')
+
+        3.times { subject.win_point(player_one) }
+        expect(subject.display_score).to eq('40 : 0')
+      end
+    end
+
+    context 'player two scores points' do
+      it 'it increments scores by one' do
+        subject.win_point(player_two)
+        expect(subject.display_score).to eq('0 : 15')
+
+        2.times { subject.win_point(player_two) }
+        expect(subject.display_score).to eq('0 : 30')
+
+        3.times { subject.win_point(player_two) }
+        expect(subject.display_score).to eq('0 : 40')
+      end
+    end
+
+    context 'both players score points' do
+      it 'increments scores' do
+        subject.win_point(player_one)
+        subject.win_point(player_two)
+        expect(subject.display_score).to eq('15 : 15')
+
+        2.times { subject.win_point(player_one) }
+        2.times { subject.win_point(player_two) }
+        expect(subject.display_score).to eq('30 : 30')
+
+        3.times { subject.win_point(player_one) }
+        3.times { subject.win_point(player_two) }
+        expect(subject.display_score).to eq('40 : 40')
       end
     end
   end
+
 
   describe '#score' do
     subject { described_class.new(player_one, player_two) }
@@ -41,9 +63,5 @@ RSpec.describe Tennis do
     end
 
   end
-
-
-
-
 
 end

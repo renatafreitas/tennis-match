@@ -1,14 +1,11 @@
-require 'tty-prompt'
+# frozen_string_literal: true
+require 'pry'
 
 class Tennis
-  # $prompt = TTY::Prompt.new
-  # name = $prompt.ask('hello, whats your name')
-  # puts name
 
   attr_accessor :player_one_score, :player_two_score
 
   def initialize(player_one, player_two)
-    raise ArgumentError, 'Please give player names' if player_one.nil? || player_two.nil?
     @player_one = player_one
     @player_two = player_two
     @player_one_score = 0
@@ -23,13 +20,17 @@ class Tennis
     end
   end
 
-  def score
-    puts 'test'
+  def display_score
+    # binding.pry
+    "#{@player_one_score} : #{@player_two_score}"
+
+    # return "Game won by #{winner}" if game_finished?
+
   end
 
   def winner
-
+    @player_one_score >= 4 && @player_two_score + 2 != @player_one_score
   end
 
-
+  def game_finished?; end
 end

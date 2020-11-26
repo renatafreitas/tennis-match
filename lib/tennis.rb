@@ -3,30 +3,27 @@ require 'pry'
 
 class Tennis
 
-  attr_accessor :player_one_score, :player_two_score
+  attr_accessor :player_one, :player_two, :score
 
   SCORES = ['0', '15', '30', '40']
 
   def initialize(player_one, player_two)
     @player_one = player_one
     @player_two = player_two
-    @player_one_score = 0
-    @player_two_score = 0
+    @score = {
+        player_one => 0,
+        player_two => 0
+    }
   end
 
   def win_point(player_name)
-    if player_name == @player_one
-      @player_one_score += 1
-    else
-      @player_two_score += 1
-    end
+    score[player_name] += 1
   end
 
   def display_score
-    "#{SCORES[@player_one_score]} : #{SCORES[@player_two_score]}"
-
     # return "Game won by #{winner}" if game_finished?
 
+    "#{SCORES[score[player_one]]} : #{SCORES[score[player_two]]}"
   end
 
   def winner

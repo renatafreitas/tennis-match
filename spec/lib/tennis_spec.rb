@@ -5,8 +5,6 @@ RSpec.describe Tennis do
 
   let(:player_one) { 'Joe' }
   let(:player_two) { 'Renata' }
-  let(:player_one_score) { 0 }
-  let(:player_two_score) { 0 }
 
   describe '#win_point' do
     subject { described_class.new(player_one, player_two) }
@@ -54,14 +52,5 @@ RSpec.describe Tennis do
     end
   end
 
-
-  describe '#score' do
-    subject { described_class.new(player_one, player_two) }
-
-    it 'outputs the player scores' do
-      expect { subject.score }.to output('Player one score is..., player two score is...').to_stdout
-    end
-
-  end
 
 end

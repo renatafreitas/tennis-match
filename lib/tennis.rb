@@ -21,7 +21,7 @@ class Tennis
   end
 
   def display_score
-    return "Game won by #{winner[0]}" if game_finished?
+    return "Game won by #{winner}" if game_finished?
 
     return deuce unless deuce.nil?
 

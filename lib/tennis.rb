@@ -34,7 +34,7 @@ class Tennis
 
   def deuce
     return 'Deuce' if score.values.max == 3 && score.values.min == 3
-    return "#{SCORES[score.values.min]} : advantage" if score[player_two] == 4 && score[player_one] == 3
+    return "#{SCORES[score.values.min]} : advantage" if score[player_one] == 3 && score[player_two] == 4
     return "advantage : #{SCORES[score.values.min]}" if score[player_one] == 4 && score[player_two] == 3
   end
 

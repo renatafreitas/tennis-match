@@ -23,7 +23,7 @@ class Tennis
   def display_score
     return "Game won by #{winner}" if game_finished?
 
-    return deuce unless deuce.nil?
+    return deuce_display if deuce_score?
 
     "#{SCORES[score[player_one]]} : #{SCORES[score[player_two]]}"
   end
@@ -32,10 +32,14 @@ class Tennis
     score.max_by { |_,v| v}.first
   end
 
-  def deuce
-    return 'Deuce' if score.values.max == 3 && score.values.min == 3
+  def deuce_display
     return "#{SCORES[score.values.min]} : advantage" if score[player_one] == 3 && score[player_two] == 4
     return "advantage : #{SCORES[score.values.min]}" if score[player_one] == 4 && score[player_two] == 3
+    "Deuce"
+  end
+
+  def deuce_score?
+    score.values.max >= 3 && score.values.min >= 3
   end
 
   def game_finished?
